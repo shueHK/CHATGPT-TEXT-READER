@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>自由听书 · AI Voice</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>📖</text></svg>">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 id="title">📖 自由听书</h1>
+
+  <p class="sub" id="subtitle">
+    粘贴任何文字 · 免费朗读 · 无限文章
+  </p>
+
+
+  <!-- 第一排：语言 -->
+  <div class="language">
+    <label id="langLabel">语言:</label>
+    <select id="langSelect"></select>
+  </div>
+
+
+  <!-- 第二排：读音 -->
+  <div class="setting-row">
+    <label for="voice">读音:</label>
+    <select id="voice"></select>
+  </div>
+
+
+  <!-- 第三排：速度 -->
+  <div class="setting-row">
+    <label for="rate">速度:</label>
+    <select id="rate">
+      <option value="0.8">0.8x</option>
+      <option value="1" selected>1x</option>
+      <option value="1.2">1.2x</option>
+      <option value="1.5">1.5x</option>
+    </select>
+  </div>
+
+
+  <!-- 第四排：操作按钮 -->
+  <div class="controls">
+    <button id="editBtn">✏️ 编辑文章</button>
+    <button id="playBtn">▶ 播放</button>
+    <button id="pauseBtn">⏸ 暂停</button>
+    <button id="resumeBtn">▶ 继续</button>
+    <button id="stopBtn">⏹ 停止</button>
+    <button id="resetBtn">🔄 重置</button>
+  </div>
+
+
+  <!-- 编辑区域 -->
+  <div id="editContainer">
+    <textarea
+      id="text"
+      placeholder="在这里粘贴任何你想听的文字…"
+    ></textarea>
+  </div>
+
+
+  <!-- 阅读区域 -->
+  <div id="readContainer" style="display:none;">
+    <div id="textContainer"></div>
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
