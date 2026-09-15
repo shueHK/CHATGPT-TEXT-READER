@@ -40,7 +40,7 @@ const i18n = {
     pause:"⏸ 暫停",
     stop:"⏹ 停止",
     resume:"▶ 繼續",
-    edit:"✏️ 編輯文章",
+    edit:"✏️ 編輯",
     reset:"🔄 重置",
     languageLabel:"語言:",
     voiceLabel:"讀音:",
@@ -403,7 +403,7 @@ function initUI(){
       );
 
 
-    /*
+    /* 
       只保存最后选择的声音
     */
 
@@ -801,28 +801,38 @@ function splitTextIntoSentences(text){
 
 
 /* =====================================================
-   朗读前删除引号
+   ★ 朗读前删除所有标点符号
    ===================================================== */
 
 function cleanTextForSpeech(str){
 
   return str
 
-    .replace(/[“”]/g, "")
+    /*
+      删除所有 Unicode 标点符号
 
-    .replace(/[‘’]/g, "")
+      包括：
+      ， 。 ！ ？ ： ； 、 
+      “ ” ‘ ’ 「 」 『 』
+      （ ） 【 】 《 》
+      , . ! ? : ;
+      - _ 等
+    */
+    .replace(/\p{P}/gu, "")
 
-    .replace(/[「」]/g, "")
+    /*
+      删除各种 Unicode 符号
 
-    .replace(/[『』]/g, "")
+      包括：
+      + = $ % © ® ™
+      ♥ ★ → 等
+    */
+    .replace(/\p{S}/gu, "")
 
-    .replace(/[《》]/g, "")
-
-    .replace(/[〈〉]/g, "")
-
-    .replace(/[【】]/g, "")
-
-    .replace(/[（）()]/g, "")
+    /*
+      合并多余空格
+    */
+    .replace(/\s+/g, " ")
 
     .trim();
 
